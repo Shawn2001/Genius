@@ -4,11 +4,43 @@
             <meta charset="utf-8">
                   <title>谁是小天才</title>
                   <style>
+                      h1{
+                              font-size: 50px;
+                              text-align: center;
+                              background-color: yellow;
+                              ;
+                      }
+                      p ,input[type = 'text']{
+                              font-size: 30px;
+                              margin-left: 40px;
+                      }
+                      input[type = 'text']{
+                              border : 4px solid black;
+                              width: 400px ;
+                      }
+                      .line{
+                              line-height: 0.2;
+                      }
+
 
                   </style>
 
       </head>
       <body>
             <h1>谁是小天才</h1>
+                <br><br><br><br>
+                <form>
+                <p class = 'line'>英文姓名 English name:</p>
+                      <div><input name="name" placeholder="English Name" type="text"></div>
+<br><br>
+                <p class = 'line'>学校 School name:</p>
+                      <div><input list="School" placeholder = '学校名字' type = 'text'></div>
+                        <datalist id = 'School'>
+                                <option value = '宽柔一小'>
+                                <option value = '宽柔二小'>
+                                <option value = '宽柔三小'>
+                                <option value = '宽柔四小'>
+                                <option value = '宽柔五小'>
+                </form>
       </body>
 </html>
