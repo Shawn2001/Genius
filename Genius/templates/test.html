@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+          <head>
+                  <meta name="viewport" content="width=device-width, initial-scale=1">
+                  <meta charset="utf-8">
+                  <script type="text/javascript">
+                        document.addEventListener('DOMContentLoaded',() => {
+                          document.querySelector('button').disabled = true;
+
+                          document.querySelector('#checkbox').onclick = () =>{
+                            if (document.querySelector('button').disabled == false){
+                              document.querySelector('button').disabled = true;
+                            }
+                            else{
+                              document.querySelector('button').disabled = false;
+                            }
+                          };
+                        });
+                  </script>
+                  <script type="text/javascript">
+                  window.onbeforeunload = function(event) {
+                  event.returnValue = "Your custom message.";
+                  };
+                  </script>
+                  <script type="text/javascript">
+                    function clicked(){
+                      if (confirm('交上后就不能更改了')){
+                          return true;
+                      }
+                      else {
+                          return false;
+                    }}
+                  </script>
+                            <title>比赛开始</title>
+                            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+                            <style media="screen">
+                                    body {
+                                      background-color: #ffffe6;
+                                    }
+
+                                    .header{
+                                      background-color: #5f788a;
+                                      overflow: hidden;
+                                      padding: 10px 0px;
+                                    }
+                                      .header div {
+                                        float: left;
+                                        text-align: center;
+                                        padding: 12px;
+                                        text-decoration: none;
+                                        line-height: 20px;
+                                        border-radius: 4px;
+                                      }
+                                      .nav-title{
+                                        font-weight: bold;
+                                        font-size : 40px;
+                                        color:#e1e6ea;
+                                        margin-left: 200px;
+                                      }
+                                      .question{
+                                        margin-left: 200px;
+                                        font-size: 30px;
+                                      }
+                                      .inputGroup {
+                                        display: block;
+                                        margin-left: 200px;
+                                        margin-right: 300px;
+                                        position: relative;
+                                      }
+                                      .Choices{
+                                        background-color: white;
+                                        margin-top: 7px;
+                                        padding-left: 10px;
+                                        display: block;
+                                      }
+                                      label{
+                                        padding-top: 5px;
+                                        font-size: 30px;
+                                      }
+                                      input:checked + label{
+                                        color: blue;
+                                      }
+                                      .form-submit-button{
+                                        margin-top: 14px;
+                                        padding: 10px 30px;
+                                        border-radius: 5px;
+                                        background-color: hsla(158, 99%, 83%,0.9);
+                                        border : 1px solid black;
+                                        font-size: 1.5em;
+                                        outline: none;
+                                        margin-top: 20px;
+                                        margin-bottom:200px;
+                                        color: black;
+                                      }
+                                      .form-submit-button:hover{
+                                        background-color: hsla(201, 100%, 50%, 0.3);
+                                      }
+                                      .flash-success{
+                                        background-color: hsla(110, 99%, 64%,0.7);
+                                        border: 1px solid black;
+                                        padding:50px,0px,10px,150px;
+                                        margin-right: 600px;
+                                        margin-left: 200px;
+                                        margin-bottom: 20px;
+                                        padding-bottom: 50px;
+                                        position: relative;
+                                        top: 20px;
+                                        height:20px;
+                                        font-size: 20px;
+                                      }
+                                      .flash-danger{
+                                        background-color: red;
+                                        border: 1px solid black;
+                                        padding:50px,0px,10px,150px;
+                                        margin-right: 600px;
+                                        margin-left: 200px;
+                                        margin-bottom: 20px;
+                                        padding-bottom: 50px;
+                                        position: relative;
+                                        top: 20px;
+                                        height:20px;
+                                        font-size: 20px;
+                                      }
+                                      .submit{
+                                        margin-left: 1050px;
+                                      }
+                                      .checkbox{
+                                        float: right;
+                                        margin-top: 20px;
+                                        margin-right: 250px;
+                                      }
+                                      button:disabled,button:disabled:hover{
+                                        background-color: #cccccc;
+                                        color: #666666;
+                                      }
+                            </style>
+        </head>
+        <body>
+          <header class="header">
+                  <div class="header title">
+                                  <div href='home' class ='nav-title'>我是小天才</div>
+                  </div>
+          </header>
+          <div class="flask-msg">
+                  {% with messages = get_flashed_messages(with_categories=true)%}
+                          {% if messages %}
+                                  {% for category, message in messages %}
+                                        <div class = 'flash-{{category}}'>
+                                              {{ message }}
+                                        </div>
+                                  {% endfor %}
+                          {% endif %}
+                  {% endwith %}
+              </div>
+          <div class="background-pic">
+          <form action="" method="post">
+                    {% for i in q %}
+                    <div class="form-1">
+                        <div class="question">
+                          {{i[0]}})  {{i[1]}}
+                        </div>
+                    <div class="inputGroup">
+                          <div class="Choices">
+                              <input type="radio" id="radio1{{i[0]}}" name = 'q{{i[0]}}' value="{{i[3][0]}}">
+                                    <label for=""radio1{{i[0]}}"">{{i[3][0]}}</label>
+                          </div>
+                          <div class="Choices">
+                              <input type="radio" id="radio2{{i[0]}}" name = 'q{{i[0]}}' value="{{i[3][1]}}">
+                                    <label for=""radio2{{i[0]}}"">{{i[3][1]}}</label>
+                          </div>
+                          <div class="Choices">
+                              <input type="radio" id="radio3{{i[0]}}" name = 'q{{i[0]}}' value="{{i[3][2]}}">
+                                    <label for=""radio3{{i[0]}}"">{{i[3][2]}}</label>
+                          </div>
+                          <div class="Choices">
+                              <input type="radio" id="radio4{{i[0]}}" name = 'q{{i[0]}}' value="{{i[3][3]}}">
+                                    <label for=""radio4{{i[0]}}"">{{i[3][3]}}</label>
+                          </div>
+                 </div>
+            {% endfor %}
+                <div class="checkbox">
+                      <input type="checkbox" name="tickbox" id="checkbox">我已经检查完毕了</input>
+                </div>
+                <div class="submit">
+                      <button type="submit" class="form-submit-button" id="button" onclick="return clicked();">呈交</button>
+                </div>
+                </div>
+          </form>
+        </div>
+        </body>
+</html>

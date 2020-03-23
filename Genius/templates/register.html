@@ -1,0 +1,88 @@
+{% extends 'layout.html'%}
+{% block title%}
+-注册
+{% endblock %}
+
+{% block content %}
+<div class="login-section">
+      <form method='POST' action="">
+            {{ form.hidden_tag() }}
+                <fieldset class='form-group'>
+                          <legend class = 'form-title'>注册</legend>
+                                <div class="col-row">
+                                              <div class="col-25">
+                                                        {{form.Cname.label(class='col-25-label')}}
+                                              </div>
+                                              <div class="col-75">
+                                                        {% if form.Cname.errors %}
+                                                            {{ form.Cname(class = 'col-75-error') }}
+                                                                <div class="Invalid-feedback">
+                                                                      {% for error in form.Cname.errors %}
+                                                                          <small>{{ error }}</small>
+                                                                      {% endfor %}
+                                                                </div>
+                                                        {% else %}
+                                                            {{form.Cname(class='col-75-label')}}
+                                                        {% endif %}
+                                              </div>
+                                </div>
+                                <div class="col-row">
+                                              <div class="col-25">
+                                                        {{form.Ename.label(class='col-25-label')}}
+                                              </div>
+                                              <div class="col-75">
+                                                        {% if form.Ename.errors %}
+                                                            {{ form.Ename(class = 'col-75-error') }}
+                                                                <div class="Invalid-feedback">
+                                                                      {% for error in form.Ename.errors %}
+                                                                          <span>{{ error }}</span>
+                                                                      {% endfor %}
+                                                                </div>
+                                                        {% else %}
+                                                            {{form.Ename(class='col-75-label')}}
+                                                        {% endif %}
+                                              </div>
+                                </div>
+                                <div class="col-row">
+                                              <div class="col-25">
+                                                        {{form.School.label(class='col-25-label')}}
+                                              </div>
+                                              <div class="col-75">
+                                                        {% if form.School.errors %}
+                                                            {{ form.School (class = 'col-75-error') }}
+                                                                <div class="Invalid-feedback">
+                                                                      {% for error in form.School.errors %}
+                                                                          <span>{{ error }}</span>
+                                                                      {% endfor %}
+                                                                </div>
+                                                        {% else %}
+                                                            {{form.School(class='col-75-label')}}
+                                                        {% endif %}
+                                              </div>
+                                </div>
+                                <div class="col-row">
+                                              <div class="col-25">
+                                                        {{form.Student_id.label(class='col-25-label')}}
+                                              </div>
+                                              <div class="col-75">
+                                                        {% if form.Student_id.errors %}
+                                                            {{ form.Student_id(class = 'col-75-error') }}
+                                                                <div class="Invalid-feedback">
+                                                                      {% for error in form.Student_id.errors %}
+                                                                          <span>{{ error }}</span>
+                                                                      {% endfor %}
+                                                                </div>
+                                                        {% else %}
+                                                            {{form.Student_id(class='col-75-label')}}
+                                                        {% endif %}
+                                              </div>
+                                </div>
+                                <div class="form-submit">
+                                                          {{form.submit(class='form-submit-button')}}
+                                </div>
+                    </fieldset>
+      </form>
+</div>
+
+
+{% endblock %}

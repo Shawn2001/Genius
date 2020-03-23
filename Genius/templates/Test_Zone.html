@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+                  <title>注意注意</title>
+                        <style media="screen">
+                          .background-pic{
+                            background-image: url('static/School.jpg');
+                            height: 100vh;
+                            width: 200vh;
+                            background-size :cover;
+                            background-position: center;
+                            padding-top: 20px;;
+                            margin :0px;
+                          }
+                          .content_box{
+                            border: 1px solid black;
+                            background-color : hsla(188, 76%, 81%, 0.8);
+                            margin-left: 300px;
+                            margin-right: 300px;
+                            height: 400px;
+                          }
+                          h1{
+                            text-align:center;
+                            font-size: 55px;
+                          }
+                          .input-field{
+                            text-align: center;
+                          }
+                          .input{
+                            text-align: center;
+                            width: 300px;
+                            font-size: 55px;
+                          }
+                          .content_box>h2{
+                            text-align: center;
+                            font-size: 50px;
+                            font-weight: bold;
+                          }
+                          .content_box>p{
+                            font-size: 40px;
+                            padding-left: 6px;
+                            padding-right: 6px;
+                          }
+                          .form-submit-button{
+                            margin-left: 10px;
+                            padding: 10px 30px;
+                            border-radius: 5px;
+                            background-color: hsla(360,100%,50%,0.9);
+                            border : 1px solid hsl(201,100%,50%);
+                            font-size: 1.5em;
+                            outline: none;
+                            margin-top: 14px;
+                            color: white;
+                          }
+                          .flash-danger{
+                            background-color: red;
+                            border: 1px solid black;
+                            padding:50px,0px,10px,150px;
+                            margin-right: 600px;
+                            margin-left: 200px;
+                            margin-bottom: 20px;
+                            padding-bottom: 50px;
+                            position: relative;
+                            top: 20px;
+                            height:20px;
+                            font-size: 20px;
+                          }
+                          small{
+                            color: red;
+                          }
+
+                </style>
+        </head>
+        <body>
+                <div class="background-pic">
+                  <div class="flask-msg">
+                      {% with messages = get_flashed_messages(with_categories=true)%}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                  <div class = 'flash-{{category}}'>
+                                      {{ message }}
+                                  </div>
+                            {% endfor %}
+                        {% endif %}
+                      {% endwith %}
+                        <h1>请输入参赛代码</h1>
+                <form action="" method="post">
+                  {{ form.hidden_tag() }}
+                        <div class="input-field">
+                                      {% if form.code.errors %}
+                                          {{ form.code(class = 'input') }}
+                                              <div class="Invalid-feedback">
+                                                    {% for error in form.code.errors %}
+                                                        <small>{{ error }}</small>
+                                                    {% endfor %}
+                                              </div>
+                                      {% else %}
+                                          {{form.code(class='input')}}
+                                      {% endif %}
+
+                                    {{form.submit(class="form-submit-button")}}
+
+                        </div>
+                </form>
+                        <div class="content_box">
+                                    <h2>参赛者须知<h2>
+                                    <p>此比赛严谨作弊等行为，违者将取消参赛资格！！！</p>
+                        </div>
+                </div>
+            </div>
+        </body>
+</html>

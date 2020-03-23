@@ -1,0 +1,49 @@
+{% extends 'layout.html'%}
+{% block title%}
+-个人资料
+{% endblock %}
+
+{% block content %}
+        <div class="info-container">
+            <div class="title-info">
+                        <h1>个人资料</h1>
+            </div>
+            <div class="content-info">
+                        <div class="row-info">
+                                  <div class="row-info-title">
+                                    华文名字
+                                  </div>
+                                  <div class="row-info-content">
+                                  {{current_user.cname}}
+                                  </div>
+                        </div>
+                        <div class="row-info">
+                                  <div class="row-info-title">
+                                    英文名字
+                                  </div>
+                                  <div class="row-info-content">
+                                  {{current_user.ename}}
+                                  </div>
+                        </div>
+                        <div class="row-info">
+                                  <div class="row-info-title">
+                                    学校名字
+                                  </div>
+                                  <div class="row-info-content">
+                                  {{current_user.school_name}}
+                                  </div>
+                        </div>
+                        <div class="row-info">
+                                  <div class="row-info-title">
+                                    学号
+                                  </div>
+                                  <div class="row-info-content">
+                                  {{current_user.student_id}}
+                                  </div>
+                        </div>
+                        <small>
+                                  <a href="update" class='update_hint'>资料不对？？</a>
+                        </small>
+            </div>
+        </div>
+{% endblock %}

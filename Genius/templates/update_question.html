@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+          <head>
+                  <meta name="viewport" content="width=device-width, initial-scale=1">
+                  <meta charset="utf-8">
+                            <title>增添题库</title>
+                            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+                            <style media="screen">
+                                    body {
+                                      background-color: #ffffe6;
+                                    }
+
+                                    .header{
+                                      background-color: #5f788a;
+                                      overflow: hidden;
+                                      padding: 10px 0px;
+                                    }
+                                      .header div {
+                                        float: left;
+                                        text-align: center;
+                                        padding: 12px;
+                                        text-decoration: none;
+                                        line-height: 20px;
+                                        border-radius: 4px;
+                                      }
+                                      .nav-title{
+                                        font-weight: bold;
+                                        font-size : 40px;
+                                        color:#e1e6ea;
+                                        margin-left: 200px;
+                                      }
+                                      .content_box{
+                                        margin-left : 200px;
+                                      }
+                                      .text-title{
+                                        font-size : 30px;
+                                      }
+                                      .text-input{
+                                        border : 1px solid grey;
+                                        background-color : hsla(158, 99%, 83%,0.9);
+                                        font-size : 25px;
+                                        width :800px;
+                                        height :200px;
+                                      }
+                                      .form-submit-button{
+                                        float: right;
+                                        margin-top: 14px;
+                                        padding: 10px 30px;
+                                        border-radius: 5px;
+                                        background-color: hsla(158, 99%, 83%,0.9);
+                                        border : 1px solid black;
+                                        font-size: 1.5em;
+                                        outline: none;
+                                        margin-top: 40px;
+                                        margin-bottom:200px;
+                                        margin-right :400px;
+                                        color: black;
+                                      }
+                                      .form-submit-button:hover{
+                                        background-color: hsla(201, 100%, 50%, 0.3);
+                                      }
+                                      .flash-success{
+                                        background-color: hsla(110, 99%, 64%,0.7);
+                                        border: 1px solid black;
+                                        padding:50px,0px,10px,150px;
+                                        margin-right: 600px;
+                                        margin-left: 200px;
+                                        margin-bottom: 20px;
+                                        padding-bottom: 50px;
+                                        position: relative;
+                                        top: 20px;
+                                        height:20px;
+                                        font-size: 20px;
+                                      }
+                                      .flash-danger{
+                                        background-color: red;
+                                        border: 1px solid black;
+                                        padding:50px,0px,10px,150px;
+                                        margin-right: 600px;
+                                        margin-left: 200px;
+                                        margin-bottom: 20px;
+                                        padding-bottom: 50px;
+                                        position: relative;
+                                        top: 20px;
+                                        height:20px;
+                                        font-size: 20px;
+                                      }
+                                      .Invalid-feedback  {
+                                        display: block;
+                                        width: 100%;
+                                        color: red;
+                                        text-align: center;
+                                        padding-bottom: 10px;
+                                      }
+                                      h1{
+                                        text-align: center;
+                                        font-size: 40px;
+                                        margin-top: 20px;
+                                      }
+                                      .text-id{
+                                        border : 1px solid grey;
+                                        background-color : hsla(158, 99%, 83%,0.9);
+                                        font-size : 25px;
+                                        width :800px;
+                                      }
+                            </style>
+        </head>
+        <body>
+              <header class="header">
+                      <div class="header title">
+                              <a href='admin' class ='nav-title'>我是小天才</a>
+                      </div>
+              </header>
+              <div class="flask-msg">
+                      {% with messages = get_flashed_messages(with_categories=true)%}
+                              {% if messages %}
+                                      {% for category, message in messages %}
+                                            <div class = 'flash-{{category}}'>
+                                                  {{ message }}
+                                            </div>
+                                      {% endfor %}
+                              {% endif %}
+                      {% endwith %}
+              </div>
+              <h1>更新题目</h1>
+              <div class="background-pic">
+                      <form action="" method="POST">
+                          {{ form.hidden_tag() }}
+                              <div class="content_box">
+                                    {{form.id.label(class = 'text-title')}}
+                                          <div class = 'input-box'>
+                                                  {% if form.id.errors %}
+                                                      {{ form.id(class = 'text-id') }}
+                                                          <div class="Invalid-feedback">
+                                                                {% for error in form.id.errors %}
+                                                                    <small>{{ error }}</small>
+                                                                {% endfor %}
+                                                          </div>
+                                                  {% else %}
+                                                      {{form.id(class = 'text-id')}}
+                                                  {% endif %}
+                                          </div>
+                              </div>
+                              <div class="content_box">
+                                    {{form.question.label(class = 'text-title')}}
+                                          <div class = 'input-box'>
+                                                  {% if form.question.errors %}
+                                                      {{ form.question(class = 'text-input') }}
+                                                          <div class="Invalid-feedback">
+                                                                {% for error in form.question.errors %}
+                                                                    <small>{{ error }}</small>
+                                                                {% endfor %}
+                                                          </div>
+                                                  {% else %}
+                                                      {{form.question(class = 'text-input')}}
+                                                  {% endif %}
+                                          </div>
+                              </div>
+                              <div class="content_box">
+                                    {{form.answer.label(class = 'text-title')}}
+                                          <div class = 'input-box'>
+                                                  {% if form.answer.errors %}
+                                                      {{ form.answer(class = 'text-input') }}
+                                                          <div class="Invalid-feedback">
+                                                                {% for error in form.answer.errors %}
+                                                                    <small>{{ error }}</small>
+                                                                {% endfor %}
+                                                          </div>
+                                                  {% else %}
+                                                      {{form.answer(class = 'text-input')}}
+                                                  {% endif %}
+                                          </div>
+                              </div>
+                              <div class="content_box">
+                                    {{form.wrong_answer1.label(class = 'text-title')}}
+                                          <div class = 'input-box'>
+                                            {% if form.wrong_answer1.errors %}
+                                                {{ form.wrong_answer1(class = 'text-input') }}
+                                                    <div class="Invalid-feedback">
+                                                          {% for error in form.wrong_answer1.errors %}
+                                                              <small>{{ error }}</small>
+                                                          {% endfor %}
+                                                    </div>
+                                            {% else %}
+                                                {{form.wrong_answer1(class = 'text-input')}}
+                                            {% endif %}
+                                          </div>
+                              </div>
+                              <div class="content_box">
+                                    {{form.wrong_answer2.label(class = 'text-title')}}
+                                          <div class = 'input-box'>
+                                            {% if form.wrong_answer2.errors %}
+                                                {{ form.wrong_answer2(class = 'text-input') }}
+                                                    <div class="Invalid-feedback">
+                                                          {% for error in form.wrong_answer2.errors %}
+                                                              <small>{{ error }}</small>
+                                                          {% endfor %}
+                                                    </div>
+                                            {% else %}
+                                                {{form.wrong_answer2(class = 'text-input')}}
+                                            {% endif %}
+
+                                          </div>
+                              </div>
+                              <div class="content_box">
+                                    {{form.wrong_answer3.label(class = 'text-title')}}
+                                          <div class = 'input-box'>
+                                            {% if form.wrong_answer3.errors %}
+                                                {{ form.wrong_answer3(class = 'text-input') }}
+                                                    <div class="Invalid-feedback">
+                                                          {% for error in form.wrong_answer3.errors %}
+                                                              <small>{{ error }}</small>
+                                                          {% endfor %}
+                                                    </div>
+                                            {% else %}
+                                                {{form.wrong_answer3(class = 'text-input')}}
+                                            {% endif %}
+                                          </div>
+                              </div>
+                                      {{form.submit(class="form-submit-button")}}
+                        </form>
+                </div>
+        </body>
+</html>

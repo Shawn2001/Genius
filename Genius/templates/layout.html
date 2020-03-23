@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+      <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>我是小天才 {% block title %} {% endblock %}</title>
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+          <style media="screen">
+          .header{
+            background-color: #5f788a;
+            overflow: hidden;
+            padding: 10px 0px;
+          }
+          .background-pic {
+            background-image: url('static/School.jpg');
+            height: 200vh;
+            width: 200vh;
+            background-size :cover;
+            background-position: center;
+            padding-top: 50px;
+          }
+          .header a {
+            background-color: #5f788a;
+            float: left;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            line-height: 20px;
+            border-radius: 4px;
+          }
+          .nav-title{
+            font-weight: bold;
+            font-size : 40px;
+            color:#e1e6ea;
+            margin-left: 200px;
+          }
+          .header-content{
+            float: right;
+          }
+          .nav-text{
+            font-size: 30px;
+            color:#e1e6ea;
+            margin-right: 30px;
+          }
+          header a:hover{
+            color :#ffffff;
+          }
+          .content-container{
+            border: 1px dashed grey;
+            background-color: hsla(158, 99%, 83%,0.9);
+            padding:50px,0px,100px,150px;
+            margin-right: 600px;
+            margin-left: 200px;
+            padding-bottom: 50px;
+            position: relative;
+            top: 20px;
+            height:250px;
+            margin-bottom: 20px;
+          }
+          .info-container{
+            border: 1px dashed grey;
+            background-color: hsla(188, 76%, 81%, 0.5);
+            padding:50px,0px,100px,150px;
+            margin-right: 300px;
+            margin-left: 200px;
+            position: relative;
+            top: 20px;
+            height:600px;
+          }
+          .row-info{
+            width: 1000px;
+            float: left;
+            margin-left: 20px;
+          }
+          .row-info-title{
+            font-size: 35px;
+          }
+          .row-info-content{
+            font-size: 30px;
+            margin-bottom: 10px;
+            text-decoration: underline;
+          }
+          .title-info{
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 40px;
+          }
+          .flash-success{
+            background-color: hsla(110, 99%, 64%,0.7);
+            border: 1px solid black;
+            padding:50px,0px,10px,150px;
+            margin-right: 600px;
+            margin-left: 200px;
+            margin-bottom: 20px;
+            padding-bottom: 50px;
+            position: relative;
+            top: 20px;
+            height:20px;
+            font-size: 20px;
+          }
+          .flash-danger{
+            background-color: red;
+            border: 1px solid black;
+            padding:50px,0px,10px,150px;
+            margin-right: 600px;
+            margin-left: 200px;
+            margin-bottom: 20px;
+            padding-bottom: 50px;
+            position: relative;
+            top: 20px;
+            height:20px;
+            font-size: 20px;
+          }
+          .content-title {
+            border: 1px dashed grey;
+            font-size: 30px;
+            text-align : center;
+          }
+          .content-title a{
+            color: black;
+          }
+          .content-description{
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+          }
+          .content-description a{
+            color: grey;
+          }
+
+          .login-section{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            top: 40px;
+            background-color: hsla(201,100%,6%,0.8);
+            margin-right:200px;
+            margin-left: 200px;
+            padding-bottom: 100px;
+            padding-top: 50px;
+          }
+          .form-title {
+            font-size: 30px;
+            color: white;
+          }
+          .col-row{
+            width: 400px;
+            overflow: hidden;
+            color: white;
+          }
+          .col-25-label{
+            float: left;
+            width: 100%;
+            font-size: 20px;
+            color: white;
+            font-weight: lighter;
+            margin-bottom: 7px;
+          }
+          .col-75-label{
+            float: left;
+            width: 400px;
+            background-color: hsla(201,100%,91%,0.3);
+            color: white;
+            font-weight: lighter;
+            height: 40px;
+            font-size: 20px;
+            margin-bottom:15px;
+          }
+          .col-75-error{
+            float: left;
+            width: 400px;
+            background-color: hsla(201,100%,91%,0.3);
+            color: white;
+            font-weight: lighter;
+            height: 40px;
+            font-size: 20px;
+            margin-bottom:15px;
+            border-color: red;
+          }
+          .Invalid-feedback  {
+            display: block;
+            width: 100%;
+            color: red;
+            text-align: center;
+            padding-bottom: 10px;
+          }
+          .col-75-label:focus{
+            border: 1px solid hsl(201, 100%, 50%);
+          }
+          .form-submit-button{
+            float: right;
+            margin-top: 14px;
+            padding: 10px 30px;
+            border-radius: 5px;
+            background-color: hsla(201,100%,50%,0.1);
+            border : 1px solid hsl(201,100%,50%);
+            font-size: 1.5em;
+            outline: none;
+            margin-top: 14px;
+            color: white;
+          }
+          .form-submit-button:hover{
+            background-color: hsla(201, 100%, 50%, 0.3);
+          }
+          .form-submit-button:focus{
+            background-color: hsla(201,100%,50%,0.5);
+          }
+          .form-rmb{
+            color: white;
+          }
+          .update_hint{
+            float: right;
+            font-size: 20px;
+          }
+          </style>
+      </head>
+      <body>
+          <header class="header">
+                  <div class="header title">
+                                  <a href='home' class ='nav-title'>我是小天才</a>
+                            <div class = 'header-content'>
+                                  {% if current_user.is_authenticated%}
+                                          <a href="info" class ='nav-text'>{{current_user.cname}}</a>
+                                          <a href="logout" class = 'nav-text'>登出</a>
+                                  {% else %}
+                                          <a href="login" class = 'nav-text'>登入</a>
+                                          <a href="register" class="nav-text">注册</a>
+                                  {% endif %}
+                            </div>
+                  </div>
+          </header>
+          <div class="background-pic">
+                  <div class="flask-msg">
+                      {% with messages = get_flashed_messages(with_categories=true)%}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                  <div class = 'flash-{{category}}'>
+                                      {{ message }}
+                                  </div>
+                            {% endfor %}
+                        {% endif %}
+                      {% endwith %}
+                  </div>
+
+                      {% block content %}
+                      {% endblock %}
+          </div>
+      </body>
+</html>
